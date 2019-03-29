@@ -6,10 +6,39 @@ const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize')
 
 const User = require('../models/User');
+const checkAuth = require("../middlewear/check-auth");
 
 users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
+
+users.get('/',(req, res, next) => {
+  User.findAll() //find all data
+ 
+  
+  // .select() //this is what field ik fetch
+ 
+  .then(doc =>{
+      const responce = {
+          count : doc.length,
+          product : doc
+
+      };
+ 
+
+  res.status(200).json(doc);
+  
+})
+.catch(err=>{
+  console.log(err);
+  res.status(500).json({
+      error: err
+  });
+
+});
+      
+  
+});
 
 users.post('/register', (req, res,next) => {   
   bcrypt.hash(req.body.password,10,(err,hash)=>{
