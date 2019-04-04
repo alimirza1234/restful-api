@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../database/db.js')
 
 module.exports = db.sequelize.define(
-    'Role',
+    'Module',
     
     {
       id: {
@@ -12,6 +12,12 @@ module.exports = db.sequelize.define(
       },
       name: {
         type: Sequelize.STRING
+      },
+      Arabic_name: {
+        type: Sequelize.STRING
+      },
+      screens_id: {
+        type: Sequelize.INTEGER
       },
       client_id: {
         type: Sequelize.INTEGER

@@ -14,7 +14,7 @@ process.env.SECRET_KEY = 'secret'
 
 clients.post('/register',(req, res, next) => {
     const today = new Date()
-    const client =new Client ({
+    const client = new Client ({
       
       name: req.body.name,
       description: req.body.description,
@@ -47,7 +47,10 @@ clients.post('/register',(req, res, next) => {
 )
         
 clients.get('/',(req, res, next) => {
-  Client.findAll() //find all data
+  Client.findAll({
+    where
+    
+  }) //find all data
  
   
   // .select() //this is what field ik fetch
