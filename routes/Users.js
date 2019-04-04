@@ -124,4 +124,48 @@ users.get('/profile', (req, res) => {
     })
 })
 
+users.get('/:client_id', (req, res) => {
+  User.findAll({
+    where: {
+      client_id: req.params.client_id
+     
+    }
+    
+  })
+  .then(doc =>{
+    const responce = {
+        count : doc.length,
+        product : doc
+
+    };
+
+
+res.status(200).json(doc);
+
+})
+.catch(err=>{
+console.log(err);
+res.status(500).json({
+    error: err
+});
+
+});
+    
+
+});
+// users.post('/getScreens_by_user', (req, res) => {
+//   var id = req.body.id
+//   var sqlquery;
+//   if (id == 0) {
+//     sqlquery = `SELECT client_id,id , name, url FROM screens`
+//   } else {
+//     sqlquery = `SELECT  t4.client_id,t4.id , t4.name, t4.url FROM role_screens t2 INNER JOIN user_roles t1 ON t1.role_id = t2.ROLE_ID INNER JOIN users t3 ON t1.USER_ID = t3.ID INNER JOIN screens t4 ON t2.SCREEN_ID = t4.ID where t3.id  = ${id}`
+//   }
+//   db.sequelize.query(sqlquery)
+//     .spread((results, metadata) => {
+//       res.send({ data: metadata })
+//     })
+// })
+
+
 module.exports = users

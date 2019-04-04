@@ -70,6 +70,9 @@ module.exports = db.sequelize.define(
     password: {
       type: Sequelize.STRING
     },
+    client_id: {
+      type: Sequelize.INTEGER
+    },
     created_at: {
       type: Sequelize.DATE,
       defaultValue: Sequelize.NOW
@@ -79,12 +82,11 @@ module.exports = db.sequelize.define(
       defaultValue: Sequelize.NOW
     },
     created_by: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      type: Sequelize.STRING,
+  
     },
     updated_by: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      type: Sequelize.STRING,
     }
   },
   {

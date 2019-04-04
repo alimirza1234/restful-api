@@ -1,6 +1,7 @@
+
 const Sequelize = require('sequelize')
 const db = {}
-const sequelize = new Sequelize('db', 'root', '', {
+const sequelize = new Sequelize('app', 'root', '', {
   host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
@@ -13,7 +14,19 @@ const sequelize = new Sequelize('db', 'root', '', {
   }
 })
 
+
+
 db.sequelize = sequelize
 db.Sequelize = Sequelize
+
+//model table
+
+
+
+//Relations
+// db.roles.belongsTo(db.users);  
+// db.users.hasMany(db.roles);  
+// db.users.belongsTo(db.clients);  
+// db.clients.hasMany(db.users);
 
 module.exports = db
