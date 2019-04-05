@@ -5,7 +5,7 @@ const cors = require('cors')
 // const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize')
 
-// const Role = require('../models/Roles');
+const Role = require('../models/Roles');
 
 roles.use(cors())
 
@@ -14,7 +14,7 @@ process.env.SECRET_KEY = 'secret'
 roles.post('/register',(req, res, next) => {
     const today = new Date()
     
-    const role =new Role ({
+    const role = new Role ({
       
       name: req.body.name,
      client_id: req.body. client_id,

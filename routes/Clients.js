@@ -6,14 +6,12 @@ const cors = require('cors')
 const Sequelize = require('sequelize')
 
 const Client = require('../models/Client');
-
-
 clients.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
 clients.post('/register',(req, res, next) => {
-    const today = new Date()
+  const today = new Date()
     const client = new Client ({
       
       name: req.body.name,
@@ -47,10 +45,8 @@ clients.post('/register',(req, res, next) => {
 )
         
 clients.get('/',(req, res, next) => {
-  Client.findAll({
-    where
-    
-  }) //find all data
+  Client.findAll()
+    //find all data
  
   
   // .select() //this is what field ik fetch

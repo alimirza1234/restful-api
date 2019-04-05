@@ -3,7 +3,7 @@ const db = require('../database/db.js')
 
 
 module.exports = db.sequelize.define(
-    'module',
+    'module_client',
     
     {
       id: {
@@ -11,16 +11,13 @@ module.exports = db.sequelize.define(
         primaryKey: true,
         autoIncrement: true
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      arabic_name: {
-        type: Sequelize.STRING
-      },
       client_id: {
         type: Sequelize.INTEGER
       },
-      screen_id: {
+      module_id: {
+        type: Sequelize.INTEGER
+      },
+      user_id: {
         type: Sequelize.INTEGER
       },
     

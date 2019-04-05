@@ -44,12 +44,12 @@ const db = require('../database/db.js')
 //     }
 //   )
 
-module.exports = (
-    'Client',
+module.exports = db.sequelize.define(
+    'client',
     
     {
       id: {
-        type: Sequelize.BINARY,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
       },
