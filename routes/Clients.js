@@ -110,6 +110,7 @@ clients.delete('/:clientId',(req,res,next)=>{
 
 
 clients.put('/:clientId', function (req, res, next) {
+
  
   const todo_id = req.params.clientId;
 
@@ -135,92 +136,8 @@ clients.put('/:clientId', function (req, res, next) {
       }));
 });
 
-// clients.get("asd/relation",(req,res)=>{
-//   Client.hasOne(User)  
-//   User.hasMany(Role)  
-//   Role.belongsTo(User) 
-//   // Client.hasMany(User,{ foreignKey: 'client_id' })
-//   // Client.belongsTo(User, { as: 'a', constraints: false })
 
 
-//   user.getUser() // gets you all pictures
-
-//   User.findAll({
-//     // where: ...,
-//     include: [
-//       { model: User }, // load all pictures
-//       // { model: Picture, as: 'ProfilePicture' }, // load the profile picture.
-//       // Notice that the spelling must be the exact same as the one in the association
-//     ]
-//   })
-// .then(user => res.json({user:user}))
-
-// .catch(error => res.json({
-  
-//   error: error
-// }));
-
-// })
-//Relations
-// db.roles.belongsTo(db.users);  
-// db.users.hasMany(db.roles);  
-// db.users.belongsTo(db.clients);  
-// db.clients.hasMany(db.users);
-// clients.get('/getdata', (req, res) => {  
-//   db.users.findAll({
-//     include: [
-//       {
-//         model: db.posts,
-//         include: [
-//           {
-//             model: db.comments
-//           }
-//         ]
-//       }
-//     ]
-//   }).then(users => {
-//     const resObj = users.map(user => {
-
-//       //tidy up the user data
-//       return Object.assign(
-//         {},
-//         {
-//           user_id: user.id,
-//           username: user.username,
-//           role: user.role,
-//           posts: user.posts.map(post => {
-
-//             //tidy up the post data
-//             return Object.assign(
-//               {},
-//               {
-//                 post_id: post.id,
-//                 user_id: post.user_id,
-//                 content: post.content,
-//                 comments: post.comments.map(comment => {
-
-//                   //tidy up the comment data
-//                   return Object.assign(
-//                     {},
-//                     {
-//                       comment_id: comment.id,
-//                       post_id: comment.post_id,
-//                       commenter: comment.commenter_username,
-//                       commenter_email: comment.commenter_email,
-//                       content: comment.content
-//                     }
-//                   )
-//                 })
-//               }
-//               )
-//           })
-//         }
-//       )
-//     });
-//     res.json(resObj)
-//   });
-// });
-
-
+ 
 
 module.exports = clients

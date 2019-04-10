@@ -4,7 +4,7 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
 const Sequelize = require('sequelize')
-
+const db = require("../database/db")
 const User = require('../models/User');
 const checkAuth = require("../middlewear/check-auth");
 
@@ -150,22 +150,20 @@ res.status(500).json({
 });
 
 });
+
     
 
 });
-// users.post('/getScreens_by_user', (req, res) => {
-//   var id = req.body.id
-//   var sqlquery;
-//   if (id == 0) {
-//     sqlquery = `SELECT client_id,id , name, url FROM screens`
-//   } else {
-//     sqlquery = `SELECT  t4.client_id,t4.id , t4.name, t4.url FROM role_screens t2 INNER JOIN user_roles t1 ON t1.role_id = t2.ROLE_ID INNER JOIN users t3 ON t1.USER_ID = t3.ID INNER JOIN screens t4 ON t2.SCREEN_ID = t4.ID where t3.id  = ${id}`
-//   }
-//   db.sequelize.query(sqlquery)
-//     .spread((results, metadata) => {
-//       res.send({ data: metadata })
-//     })
-// })
+users.post('/getScreens_by_client_user', (req, res) => {
+  
+  var id = req.body.id
+  var sqlquery;
+  sqlquery = `SELECT clients.ID,clients.NAME,users.ID,users.NAME FROM clients INNER JOIN users ON clients.ID=users.CLIENT_ID WHERE clients.ID =${id}`
+  db.sequelize.query(sqlquery)
+    .spread((results, metadata) => {
+      res.send({ data: metadata })
+    })
+})
 
 
 module.exports = users
